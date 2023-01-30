@@ -7,35 +7,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model cakes {
-  id          Int     @id @default(autoincrement())
-  name        String  @unique @db.VarChar(80)
-  price       Float
-  image       String
-  description String?
-}
-
-model clients {
-  id      Int      @id @default(autoincrement())
-  name    String   @unique @db.VarChar(80)
-  address String   @db.VarChar(255)
-  phone   String   @unique @db.VarChar(11)
-  orders  orders[]
-}
-
-model orders {
-  id         Int      @id @default(autoincrement())
-  clientId   Int
-  cakeId     Int
-  quantity   Int
-  createdAt  DateTime @default(now()) @db.Timestamp(6)
-  totalPrice Float
-  clients    clients  @relation(fields: [clientId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
 model products {
-  id          Int     @id @default(autoincrement())
-  name        String  @unique @db.VarChar(80)
+  id          Int         @id @default(autoincrement())
+  name        String      @unique @db.VarChar(80)
   price       Float
   description String?
+  newOrders   newOrders[]
+}
+
+model newClients {
+  id        Int         @id @default(autoincrement())
+  name      String      @unique @db.VarChar(80)
+  address   String      @db.VarChar(255)
+  newOrders newOrders[]
+}
+
+model newOrders {
+  id         Int        @id @default(autoincrement())
+  clientId   Int
+  productsId Int
+  quantity   Int
+  createdAt  DateTime   @default(now()) @db.Timestamp(6)
+  totalPrice Decimal    @db.Decimal(10, 2)
+  newClients newClients @relation(fields: [clientId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  products   products   @relation(fields: [productsId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
