@@ -1,0 +1,11 @@
+import express from "express";
+import { routes } from "./routes/route.js";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+var server = express();
+server.use(express.json());
+server.use(routes);
+server.use(cors());
+var PORT = process.env.PORT || 5000;
+server.listen(5000, function () { return console.log("Server running at port: ".concat(PORT)); });

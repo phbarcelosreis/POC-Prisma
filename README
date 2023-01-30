@@ -1,0 +1,13 @@
+Bem vindo ao Projeto em desenvolvimento da nossa Doceria!
+
+\/ Rotas logo abaixo \/
+
+POST: /produtos
+Body: { "name": "Tortinha", "price": 20, "description": "tortinha muito deliciosa" }
+
+GET: /produtos
+GET: /produtos?name=tortinha
+
+PUT: /produtos/:id?price=15
+
+DELETE: /produto?id=1
