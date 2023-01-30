@@ -1,4 +1,3 @@
-import { string } from "joi";
 import { ParsedQs } from "qs";
 import prisma from "../database/db.js";
 import { checkUpdate, Product } from "../protocols/product.js";

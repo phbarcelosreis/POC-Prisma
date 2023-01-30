@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { checkUpdate, Product } from "../protocols/product.js";
-import { addProducts, deleteProduct, filterProductsById , filterProductsByName, getAllProducts, updateQuery } from "../services/postService.js";
+import { addProducts, deleteProduct, filterProductsByName, getAllProducts, updateQuery } from "../services/postService.js";
 
 function postProduct(req: Request, res: Response) {
 
